@@ -1,0 +1,60 @@
+# Redis configuration file
+
+# Note on units: when memory size is needed, it is possible to specifiy
+# it in the usual form of 1k 5GB 4M and so forth:
+#
+# 1k => 1000 bytes
+# 1kb => 1024 bytes
+# 1m => 1000000 bytes
+# 1mb => 1024*1024 bytes
+# 1g => 1000000000 bytes
+# 1gb => 1024*1024*1024 bytes
+#
+# units are case insensitive so 1GB 1Gb 1gB are all the same.
+
+daemonize no
+pidfile /var/run/redis/redis-server.pid
+port 6379
+bind 0.0.0.0 
+timeout 0
+loglevel notice
+logfile /data/redis-server.log
+databases 16
+
+save 900 1
+save 300 10
+save 60 10000
+
+rdbcompression yes
+dbfilename dump.rdb
+
+dir /data
+
+slave-serve-stale-data yes
+# repl-ping-slave-period 10
+# repl-timeout 60
+
+appendonly no
+appendfsync everysec
+no-appendfsync-on-rewrite no
+auto-aof-rewrite-percentage 100
+auto-aof-rewrite-min-size 64mb
+
+slowlog-log-slower-than 10000
+slowlog-max-len 128
+
+vm-enabled no
+vm-swap-file /data/redis.swap
+vm-max-memory 0
+vm-page-size 32
+vm-pages 134217728
+vm-max-threads 4
+
+hash-max-zipmap-entries 512
+hash-max-zipmap-value 64
+list-max-ziplist-entries 512
+list-max-ziplist-value 64
+set-max-intset-entries 512
+zset-max-ziplist-entries 128
+zset-max-ziplist-value 64
+activerehashing yes
