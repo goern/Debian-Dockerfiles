@@ -15,12 +15,12 @@ This repository contains **Dockerfile** of [Redis](http://redis.io/) for [Docker
 
 #### Run `redis-server`
 
-    docker run -d --name redis -p 6379:6379 dockerfile/redis
+    docker run -d --name redis -p 6379:6379 goern/redis
 
 #### Run `redis-server` with persistent data directory. (creates `dump.rdb`)
 
-    docker run -d -p 6379:6379 -v <data-dir>:/data --name redis dockerfile/redis
+    docker run -d -p 6379:6379 -v <data-dir>:/data --name redis goern/redis
 
 #### Run `redis-cli`
 
-    docker run -it --rm --link redis:redis dockerfile/redis bash -c 'redis-cli -h $REDIS_PORT_6379_TCP_ADDR'
+    docker run -it --rm --link redis:redis goern/redis bash -c 'redis-cli -h $REDIS_PORT_6379_TCP_ADDR'
