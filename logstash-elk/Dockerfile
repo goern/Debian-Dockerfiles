@@ -1,5 +1,5 @@
 FROM debian:7.4 
-MAINTAINER "Benjamin Wootton <benjamin.wootton@contino.co.uk>"
+MAINTAINER "Christoph Görn <goern@b4mad.net>"
 
 # Prerequisites
 ENV DEBIAN_FRONTEND noninteractive
